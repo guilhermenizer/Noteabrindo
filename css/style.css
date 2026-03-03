@@ -1,0 +1,117 @@
+/* ======================================================
+   style.css — Estilos gerais, layout e animações CSS
+   ====================================================== */
+
+/* Reset e base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* --------------------------------------------------
+   iframe do site real
+   Fica por baixo do overlay, já carregando.
+-------------------------------------------------- */
+#site-iframe {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+  background: #000;
+}
+
+/* Classe aplicada via JS após a transição final */
+#site-iframe.visible {
+  opacity: 1;
+}
+
+/* --------------------------------------------------
+   Overlay de animação
+   Cobre tudo durante a intro; removido após término.
+-------------------------------------------------- */
+#animation-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background: #000;
+  transition: opacity 0.4s ease;
+}
+
+/* Classe aplicada pelo JS para fazer fade-out do overlay */
+#animation-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------
+   Canvas Three.js
+-------------------------------------------------- */
+#three-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* --------------------------------------------------
+   Botão Skip — glassmorphism
+-------------------------------------------------- */
+#skip-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 20;
+
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 20px;
+
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 9px 18px;
+  cursor: pointer;
+  outline: none;
+
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#skip-btn:hover {
+  background: rgba(255, 255, 255, 0.20);
+  transform: scale(1.04);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+}
+
+#skip-btn:active {
+  transform: scale(0.97);
+}
+
+/* --------------------------------------------------
+   Responsividade — Mobile (< 768px)
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  #skip-btn {
+    bottom: 20px;
+    right: 16px;
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+}

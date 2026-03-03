@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noteabrindo</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!--
+    =====================================================
+    IFRAME DO SITE REAL
+    Troque a URL abaixo pelo endereço do seu site.
+    Arquivo: index.html  |  Atributo: src do <iframe>
+    =====================================================
+  -->
+  <iframe
+    id="site-iframe"
+    src="https://example.com"
+    title="Site principal"
+    allowfullscreen
+  ></iframe>
+
+  <!-- Overlay de animação — cobre o iframe durante o loading -->
+  <div id="animation-overlay">
+
+    <!-- Canvas Three.js — renderizado pelo notebook.js / main.js -->
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Botão Skip (canto inferior direito) -->
+    <button id="skip-btn" aria-label="Pular animação">Pular ▶</button>
+
+  </div>
+
+  <!-- Three.js via CDN (SRI garante integridade do arquivo) -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+    integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <!-- Módulos do projeto (ordem importa) -->
+  <script src="js/notebook.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
